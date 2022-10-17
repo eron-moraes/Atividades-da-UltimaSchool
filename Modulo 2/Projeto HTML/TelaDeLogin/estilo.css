@@ -3,7 +3,6 @@
     padding: 0;
     font-family: 'Roboto Slab', sans-serif;
 }
-
 .container {
     width: 100vm;
     height: 100vh;
@@ -13,11 +12,10 @@
     justify-content: center;
     align-items: center;
 }
-
 h1#ultima {
-    margin-top: -550px;
-}
+    margin-top: -490px;
 
+}
 .container_login {
     width: 500px;
     height: 500px;
@@ -25,16 +23,13 @@ h1#ultima {
     border-top: 5px solid #2A88C8;
    
 }
-
 img#i {
     position: absolute;
-    width: 335px;
-    height: 500px; 
-    margin-left: 420px;   
-    opacity: 0.84;
-    justify-content: center;
-    align-items: center;
-
+    width: 433px;
+    height: 647px; 
+    right: 0px; 
+    top: 0px;  
+    opacity: 0.83;
 }
 
 h1 {
@@ -59,6 +54,15 @@ input {
 
 }
 
+input#check {
+    position: absolute;
+    width: 115px;
+    height: 20px;
+    left: 470px;
+    top: 331px;
+ 
+}
+
 button {
     width: 340px;
     height: 56px;
@@ -67,5 +71,9 @@ button {
     color: #ffffff;
     margin-bottom: 24px;
     border-radius: 15px;
+    margin: 20px;
 }
 
+p {
+    margin: 10px;
+}
