@@ -1,0 +1,72 @@
+name:  CI com trigger por update
+
+on:
+
+ # schedule:
+ # - cron: '0 */6 * * 5'  # https://crontab.guru/ #
+  
+  push:                   # EXECUÇÃO A CADA PUSH NA BRANCH MAIN
+    branches:
+     - 'main'
+      
+  workflow_dispatch:      # EXECUÇÃO MANUAL
+  
+
+jobs:
+        
+  build:
+    name: Build 
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo INICIAR A IMPLEMENTAÇÃO - CI 
+      
+  deploy-dev:
+    name: Teste em DEV
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+
+      # Install required deps for action - jest, jest-html-report
+      - name: Install Dependencies
+        run: npm install --save-dev jest jest-html-reporter 
+
+      # Finally, run our tests
+      - name: Run the tests
+        run: npm test
+        
+      - name: Generate report
+        run:  npm test
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jest-report
+          path: './test-report.html'
+      - run: echo REALIZANDO TESTES UNITARIOS e SALVANDO O REPORT
+      
+  testing-qa-int:
+    name: Mover código para QA-INT e Testar (MODULO 4)
+    needs: [deploy-dev]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo MOVENDO E TESTES DE INTEGRACAO EM AMBIENTE QA-INT
+        
+  deploy-qa-system:
+    name: Mover para QA-SYSTEM e Testar (MODULO 5)
+    needs: [testing-qa-int]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo MOVENDO E TESTES DE SYSTEMA EM AMBIENTE QA-SYSTEM
+      
+  deploy-pre-production:
+    name: Disponibilizar a solução em Pré-produção
+    needs: [deploy-qa-system]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo FINALIZAR O DEPLOYMENT - CD
+      
+ 

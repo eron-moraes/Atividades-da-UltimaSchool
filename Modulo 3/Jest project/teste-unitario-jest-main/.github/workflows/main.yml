@@ -1,0 +1,62 @@
+name:  CI-CD 
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+        
+  build:
+    name: Build 
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo CONSTRUINDO O SOFTWARE NO AMBIENTE DE DEV
+      
+  deploy-dev:
+    name: Teste em DEV
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+
+      # Install required deps for action - jest, jest-html-report
+      - name: Install Dependencies
+        run: npm install --save-dev jest jest-html-reporter 
+
+      # Finally, run our tests
+      - name: Run the tests
+        run: npm test
+        
+      - name: Generate report
+        run:  npm test
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jest-report
+          path: './test-report.html'
+      - run: echo REALIZANDO TESTES UNITARIOS
+      
+  testing-qa:
+    name: Mover código para QA e Testar
+    needs: [deploy-dev]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo MOVENDO E TESTES DE INTEGRACAO EM AMBIENTE QA
+        
+  deploy-stage:
+    name: Mover para STAGE
+    needs: [testing-qa]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo MOVENDO PARA AMBIENTE DE PRE-PRODUCAO
+      
+  deploy-production:
+    name: Lançar software em Produção
+    needs: [deploy-stage]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo LANCAMENTO DO SOFTWARE
