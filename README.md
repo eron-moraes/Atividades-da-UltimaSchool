@@ -1,15 +1,16 @@
-# Atividades da UltimaSchool
+# Atividades da Ultima.School
  Algumas atividades do curso de Analista de Teste de Software que faço na Ultima School. 
  _________________________________________________________________________________________
  
 Curso focado no conceito e no ensino prático de ferramentas e técnicas de teste de software.
 
 As técnicas de teste são:
--Testes Manuais
+
+- Testes Manuais
 - Testes Automatizados
 - Testes Móveis
 - Testes de API
-- lógica de Programação
+- Lógica de Programação
 
 Ferramentas utilizadas durante o curso: 
 
