@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "8482954f-fad3-4c80-b76c-641a7a14c211",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25111168"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.predic8.de/shop/customers/350",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.predic8.de/shop/customers/350",
+					"protocol": "http",
+					"host": [
+						"api",
+						"predic8",
+						"de"
+					],
+					"path": [
+						"shop",
+						"customers",
+						"350"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
