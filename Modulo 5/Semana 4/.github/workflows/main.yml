@@ -1,0 +1,39 @@
+#DO THE TEST EACH 6 HOURS FROM MONDAY TO FRIDAY
+name: Selenium tests with Github Actions
+on: 
+#   schedule:
+#   - cron: "0 */6 * * 1-5"
+  
+  push:
+    branches:
+     - 'main'
+      
+  workflow_dispatch:
+
+jobs:
+
+  #test_schedule:
+  checkout-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        timeout-minutes: 10
+
+      - name: Install libraries
+        run: npm install --save-dev @cucumber/pretty-formatter @cucumber/cucumber selenium-webdriver assert chromedriver   
+        timeout-minutes: 10
+        
+      - name: Run Tests
+        continue-on-error: true
+        run:  npm run test       
+          
+       
+      - name: Generate report
+        uses: actions/upload-artifact@v2
+        with:
+         name: Myreport.html
+         path: "**/cucumber-report.html"       
+       

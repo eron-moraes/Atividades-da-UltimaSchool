@@ -1,0 +1,21 @@
+{
+  "name": "simple_selenium_with_cucumberjs-main",
+  "version": "1.0.0",
+  "description": "Simple Selenium with CucumberJS for Studies",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/* --format html:cucumber-report.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.7.0",
+    "@cucumber/pretty-formatter": "^1.0.0"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "chromedriver": "^107.0.3",
+    "geckodriver": "^3.2.0",
+    "selenium-webdriver": "^4.6.0"
+  }
+}
