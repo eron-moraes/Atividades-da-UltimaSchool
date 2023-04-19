@@ -11,4 +11,3 @@ Foram realizados 3 roteiros de teste:
 3 - Teste dos modos retrato e paisagem.
 
 ![modo retrato](https://user-images.githubusercontent.com/110741158/232952012-eef1111a-2a4b-48e9-a57b-74c4c80a0377.png)
-
