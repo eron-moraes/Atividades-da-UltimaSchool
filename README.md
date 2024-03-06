@@ -14,7 +14,6 @@ As técnicas de teste são:
 
 Ferramentas utilizadas durante o curso: 
 
-
 Testes ágeis + Scrum | SQL | BDD + Cucumber | Jira | Selenium | Javascript | Git + GitHub | HTML + CSS | Restful API | Swagger | NodeJs | Postman | Docker
 
 
